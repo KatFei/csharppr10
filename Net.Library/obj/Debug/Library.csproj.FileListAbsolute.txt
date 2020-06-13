@@ -1,0 +1,10 @@
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Net.Library\bin\Debug\SomeProject.Library.dll
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Net.Library\bin\Debug\SomeProject.Library.pdb
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Net.Library\obj\Debug\SomeProject.Library.dll
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Net.Library\obj\Debug\SomeProject.Library.pdb
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Net.Library\bin\Debug\SomeProject.Library.dll
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Net.Library\bin\Debug\SomeProject.Library.pdb
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Net.Library\obj\Debug\Library.csprojAssemblyReference.cache
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Net.Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Net.Library\obj\Debug\SomeProject.Library.dll
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Net.Library\obj\Debug\SomeProject.Library.pdb

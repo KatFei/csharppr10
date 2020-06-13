@@ -1,0 +1,25 @@
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\bin\Debug\TcpClient.exe.config
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\bin\Debug\TcpClient.exe
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\bin\Debug\TcpClient.pdb
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\bin\Debug\SomeProject.Library.dll
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\bin\Debug\SomeProject.Library.pdb
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\obj\Debug\TcpClient.csprojAssemblyReference.cache
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\obj\Debug\SomeProject.TcpClient.ClientMainWindow.resources
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\obj\Debug\SomeProject.TcpClient.Properties.Resources.resources
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\obj\Debug\TcpClient.csproj.GenerateResource.cache
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\obj\Debug\TcpClient.csproj.CopyComplete
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\obj\Debug\TcpClient.exe
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Client\obj\Debug\TcpClient.pdb
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\bin\Debug\TcpClient.exe.config
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\bin\Debug\TcpClient.exe
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\bin\Debug\TcpClient.pdb
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\bin\Debug\SomeProject.Library.dll
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\bin\Debug\SomeProject.Library.pdb
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\obj\Debug\TcpClient.csprojAssemblyReference.cache
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\obj\Debug\SomeProject.TcpClient.ClientMainWindow.resources
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\obj\Debug\SomeProject.TcpClient.Properties.Resources.resources
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\obj\Debug\TcpClient.csproj.GenerateResource.cache
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\obj\Debug\TcpClient.csproj.CoreCompileInputs.cache
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\obj\Debug\TcpClient.csproj.CopyComplete
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\obj\Debug\TcpClient.exe
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Client\obj\Debug\TcpClient.pdb

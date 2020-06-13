@@ -1,0 +1,6 @@
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\SimpleServer\bin\Debug\SimpleServer.exe.config
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\SimpleServer\bin\Debug\SimpleServer.exe
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\SimpleServer\bin\Debug\SimpleServer.pdb
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\SimpleServer\obj\Debug\SimpleServer.csprojAssemblyReference.cache
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\SimpleServer\obj\Debug\SimpleServer.exe
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\SimpleServer\obj\Debug\SimpleServer.pdb

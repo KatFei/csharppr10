@@ -1,0 +1,19 @@
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\bin\Debug\TcpServer.exe.config
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\bin\Debug\TcpServer.exe
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\bin\Debug\TcpServer.pdb
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\bin\Debug\SomeProject.Library.dll
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\bin\Debug\SomeProject.Library.pdb
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\obj\Debug\TcpServer.csprojAssemblyReference.cache
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\obj\Debug\TcpServer.csproj.CopyComplete
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\obj\Debug\TcpServer.exe
+C:\Users\kseno\Documents\Documents\Технология программирования C#\Презентации\Лекция 10 (код)\2 - Несколько клиентов\Клиент-серверное приложение\ПРИМЕР\Tcp.Server\obj\Debug\TcpServer.pdb
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\bin\Debug\TcpServer.exe.config
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\bin\Debug\TcpServer.exe
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\bin\Debug\TcpServer.pdb
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\bin\Debug\SomeProject.Library.dll
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\bin\Debug\SomeProject.Library.pdb
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\obj\Debug\TcpServer.csprojAssemblyReference.cache
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\obj\Debug\TcpServer.csproj.CoreCompileInputs.cache
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\obj\Debug\TcpServer.csproj.CopyComplete
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\obj\Debug\TcpServer.exe
+C:\Users\Екатерина\Source\Repos\KatFei\csharppr10\Tcp.Server\obj\Debug\TcpServer.pdb

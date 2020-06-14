@@ -7,14 +7,19 @@ namespace SomeProject.TcpClient
 {
     public partial class ClientMainWindow : Form
     {
+        /// <summary> Клиент TCP </summary>
+        Client client;
         public ClientMainWindow()
         {
             InitializeComponent();
+            //lblPath.UseCompatibleTextRendering();
+            //client = new Client();
+
         }
 
         private void OnMsgBtnClick(object sender, EventArgs e)
         {
-            Client client = new Client();
+            client = new Client();
             Result res = client.SendMessageToServer(textBox.Text).Result;
             if(res == Result.OK)
             {
@@ -29,6 +34,19 @@ namespace SomeProject.TcpClient
             timer.Start();
         }
 
+        private void OnDataFromServerRecieved(object sender, EventArgs e)
+        {
+            client = new Client(); // перенести в конструктор ClientMainWindow
+            
+            if (e.ToString() != "")
+            {
+                textBox.Text += "\n"+ e.ToString();
+                labelRes.Text = "Message from server recieved!";
+            }
+            timer.Interval = 2000;
+            timer.Start();
+        }
+
         private void OnTimerTick(object sender, EventArgs e)
         {
             labelRes.Text = "";
@@ -37,9 +55,9 @@ namespace SomeProject.TcpClient
 
         private void butSendFile_Click(object sender, EventArgs e)
         {
-            if ((lblPath.Text != "") && (lblPath.Text != "No file choosen"))
+            if ((lblPath.Text != "") && (lblPath.Text != "No file chosen"))
             {
-                Client client = new Client();
+                client = new Client();
                 Result res = client.SendFileToServer(lblPath.Text).Result;
                 if (res == Result.OK)
                 {
@@ -58,8 +76,11 @@ namespace SomeProject.TcpClient
         private void butBrowse_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
+            //проверять что файл выбран
+            if (openFileDialog1.FileName != "openFileDialog1") { 
             string path = openFileDialog1.FileName;
             lblPath.Text = path;
+            }
         }
     }
 }

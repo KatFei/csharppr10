@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SomeProject.Library
 {
     public enum Result { OK, Fail };
-    public enum SendingType { Msg, File };
+    public enum SendingType { Sys, Msg, File, FileInf};
     public class OperationResult
     {
         public Result Result;

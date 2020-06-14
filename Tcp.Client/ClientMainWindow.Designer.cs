@@ -59,6 +59,9 @@
             this.textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox.Size = new System.Drawing.Size(419, 217);
             this.textBox.TabIndex = 1;
+            // прослушивать событие "получено сообщение"
+            // в коде реализации ClientMainWindow - создать обработчик
+            //
             // 
             // labelRes
             // 
@@ -78,9 +81,11 @@
             // 
             // lblPath
             // 
+            this.lblPath.AutoEllipsis = true;
             this.lblPath.AutoSize = true;
             this.lblPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblPath.Location = new System.Drawing.Point(53, 289);
+            this.lblPath.MaximumSize = new System.Drawing.Size(200, 18);
             this.lblPath.Name = "lblPath";
             this.lblPath.Size = new System.Drawing.Size(103, 18);
             this.lblPath.TabIndex = 3;

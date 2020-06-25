@@ -33,7 +33,7 @@
             this.textBox = new System.Windows.Forms.TextBox();
             this.labelRes = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.lblPath = new System.Windows.Forms.Label();
             this.butBrowse = new System.Windows.Forms.Button();
             this.butSendFile = new System.Windows.Forms.Button();
@@ -59,9 +59,6 @@
             this.textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox.Size = new System.Drawing.Size(419, 217);
             this.textBox.TabIndex = 1;
-            // прослушивать событие "получено сообщение"
-            // в коде реализации ClientMainWindow - создать обработчик
-            //
             // 
             // labelRes
             // 
@@ -74,10 +71,6 @@
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.OnTimerTick);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // lblPath
             // 
@@ -129,6 +122,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ClientMainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client application";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -141,7 +135,7 @@
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Label labelRes;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog dlgOpenFile;
         private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.Button butBrowse;
         private System.Windows.Forms.Button butSendFile;

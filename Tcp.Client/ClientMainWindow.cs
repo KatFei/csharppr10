@@ -13,17 +13,19 @@ namespace SomeProject.TcpClient
         {
             InitializeComponent();
             //lblPath.UseCompatibleTextRendering();
-            //client = new Client();
-
+            client = new Client();
+            //создать client.Connect()
+            client.DataFromServerRecieved += new EventHandler<string>(this.OnDataFromServerRecieved);
         }
 
         private void OnMsgBtnClick(object sender, EventArgs e)
         {
-            client = new Client();
-            Result res = client.SendMessageToServer(textBox.Text).Result;
+            //client = new Client();
+            //client.ListenForData();
+            Result res = client.SendMessageToServer(textBox.Text).Result.Result;
             if(res == Result.OK)
             {
-                textBox.Text = "";
+                //textBox.Text = "";
                 labelRes.Text = "Message was sent succefully!";
             }
             else
@@ -34,13 +36,13 @@ namespace SomeProject.TcpClient
             timer.Start();
         }
 
-        private void OnDataFromServerRecieved(object sender, EventArgs e)
+        private void OnDataFromServerRecieved(object sender, string msg)
         {
-            client = new Client(); // перенести в конструктор ClientMainWindow
+            //client = new Client(); // перенести в конструктор ClientMainWindow
             
-            if (e.ToString() != "")
+            if (msg != "")
             {
-                textBox.Text += "\n"+ e.ToString();
+                textBox.Text += Environment.NewLine + msg;
                 labelRes.Text = "Message from server recieved!";
             }
             timer.Interval = 2000;
@@ -57,7 +59,7 @@ namespace SomeProject.TcpClient
         {
             if ((lblPath.Text != "") && (lblPath.Text != "No file chosen"))
             {
-                client = new Client();
+                //client = new Client();
                 Result res = client.SendFileToServer(lblPath.Text).Result;
                 if (res == Result.OK)
                 {
@@ -75,10 +77,10 @@ namespace SomeProject.TcpClient
 
         private void butBrowse_Click(object sender, EventArgs e)
         {
-            openFileDialog1.ShowDialog();
+            dlgOpenFile.ShowDialog();
             //проверять что файл выбран
-            if (openFileDialog1.FileName != "openFileDialog1") { 
-            string path = openFileDialog1.FileName;
+            if (dlgOpenFile.FileName != "") { 
+            string path = dlgOpenFile.FileName;
             lblPath.Text = path;
             }
         }

@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.IO;
 using System.Net;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SomeProject.Library.Client
 {
@@ -26,13 +28,9 @@ namespace SomeProject.Library.Client
         {
             //clientListener = new TcpListener("127.0.0.1", 8080);
             IPendpoint = new IPEndPoint(IP, port);
-            //tcpClient = new TcpClient();//IPendpoint
 
-            //tcpClient.Client.ConnectAsync(IPendpoint);
-            
-            //ListenForData();
-            //tcpClient keep alive
         }
+        //not used
         public async Task ListenToServer() {
             try {
                 if (tcpClient != null)
@@ -47,6 +45,7 @@ namespace SomeProject.Library.Client
             }
             catch { }
         }
+        //not used
         public async Task ListenForData()
         {
             try
@@ -104,54 +103,19 @@ namespace SomeProject.Library.Client
             }
         }
 
-        public OperationResult SendingManager(SendingType type)
-        {
-            try
-            {
-                //if (!tcpClient.Connected)  
-
-                //if (tcpClient != null)
-                //    if (!tcpClient.Client.Connected)
-                tcpClient = new TcpClient();
-                tcpClient.Connect(IP, port);    
-                //tcpClient.Client.ConnectAsync(IPendpoint); //tcpClient = new TcpClient("127.0.0.1", 8080);
-
-                NetworkStream stream = tcpClient.GetStream();
-                byte[] data = null; 
-                if(type == SendingType.Msg)
-                    data = System.Text.Encoding.UTF8.GetBytes("msg");
-                else
-                    if (type == SendingType.File)
-                        data = System.Text.Encoding.UTF8.GetBytes("file");
-                stream.Write(data, 0, data.Length);
-                stream.Close();
-                tcpClient.Client.SetSocketOption(SocketOptionLevel.Tcp, SocketOptionName.KeepAlive, true);
-                tcpClient.Close();
-                //tcpClient.Client.Listen(1);
-                //tcpClient.Client.
-                return new OperationResult(Result.OK, "");
-            }
-            catch (Exception e)
-            {
-                return new OperationResult(Result.Fail, e.Message);
-            }
-        }
+        
         public async Task<OperationResult> SendMessageToServer(string message)
         {
             try
             {
-                //проверка в SendingManager (или здесь) что соединение уже есть
-                SendingManager(SendingType.Msg);
-                //tcpClient = new TcpClient("127.0.0.1", 8080);
-                //if (tcpClient != null)
-                //    if (!tcpClient.Client.Connected)
                 tcpClient = new TcpClient();
-                tcpClient.Connect(IP, port); //tcpClient.Client.ConnectAsync(IPendpoint);//tcpClient = new TcpClient("127.0.0.1", 8080);
-                                                                  //SendingManager(SendingType.Msg);
-                                                                  //if (SendingManager(SendingType.Msg).Result == Result.OK)
-                                                                  //{
+                tcpClient.Connect(IP, port); 
+                //tcpClient.Client.ConnectAsync(IPendpoint);//tcpClient = new TcpClient("127.0.0.1", 8080);
+
                 NetworkStream stream = tcpClient.GetStream();
-                    byte[] data = System.Text.Encoding.UTF8.GetBytes(message);
+                byte[] data = { 0 };
+                stream.Write(data, 0, 1);
+                data = System.Text.Encoding.UTF8.GetBytes(message);
                     stream.Write(data, 0, data.Length);
                 //Логирование
                 OperationResult result = ReceiveMessageFromServer().Result;// ListenToServer();
@@ -179,48 +143,35 @@ namespace SomeProject.Library.Client
                 //SendMessageToServer("Uploading file: " + path);
 
                 //сообщаем что дальше будет файл
-                SendingManager(SendingType.File);
+                //отправляем байт 0 или 1
+                //SendingManager(SendingType.File);
 
                 //посылаем расширение файла
                 string filename = path.Substring(path.LastIndexOf('\\')+1);
                 
-                SendMessageToServer(filename);//path.Substring(path.Split('/'));
+                //SendMessageToServer(filename);//path.Substring(path.Split('/'));
 
-                //if (tcpClient != null)
-                //    if (!tcpClient.Client.Connected)
                 tcpClient = new TcpClient();
                 tcpClient.Connect(IP, port); //tcpClient.Client.Connect(IPendpoint); //tcpClient = new TcpClient("127.0.0.1", 8080);
-                            
-                            //NetworkStream netStream;
-                            //try
-                            //{
-                            //    client.Connect(new IPEndPoint(ipAddress, port));
-                            //}
 
-                            //catch (Exception ex)
-                            //{
-                            //    Console.WriteLine(ex.Message);
-                            //}
                 NetworkStream stream = tcpClient.GetStream();
+                //посылаем индикатор типа - 1 - файл
+                byte[] data = { 1 };
+                stream.Write(data, 0,1);
+                //создать объект FilePackage
 
-                //посылаем длину файла  
-                Console.WriteLine("Сокет соединился c cервером");
-                //byte[] msg = Encoding.GetEncoding(1251).GetBytes(filename + "<TheEnd>");
-                byte[] data = File.ReadAllBytes(path);
-                byte[] dataLength = BitConverter.GetBytes(data.Length);
-                byte[] package = new byte[4 + data.Length];
-                dataLength.CopyTo(package, 0);
-                data.CopyTo(package, 4);
-                int bytesSent = 0;
-                int bytesLeft = package.Length;
-                        //stream.Write(data, 0, data.Length);
-                while (bytesLeft > 0)
-                {
-                    int nextPacketSize = (bytesLeft > 1024) ? 1024 : bytesLeft;
-                    stream.Write(package, bytesSent, nextPacketSize);
-                    bytesSent += nextPacketSize;
-                    bytesLeft -= nextPacketSize;
-                }
+                //посылаем пакет с файлаом
+                //Console.WriteLine("Сокет соединился c cервером");
+
+
+                data = File.ReadAllBytes(path);
+                //byte[] dataLength = BitConverter.GetBytes(data.Length);
+
+                //Сериализация:                                 //serialize file with BinaryFormatter
+                FilePackage p = new FilePackage(filename, data);
+                IFormatter formatter = new BinaryFormatter(); // Модуль форматирования, который будет сериализовать класс
+                formatter.Serialize(stream, p); // процесс сериализации
+
                 //Логирование
                 OperationResult result = ReceiveMessageFromServer().Result;// ListenToServer();
                 if (result.Result == Result.OK)
@@ -228,10 +179,6 @@ namespace SomeProject.Library.Client
                     DataFromServerRecieved(this, result.Message);
                 }
                 stream.Close();
-                //tcpClient.Close();
-                //serialize file with BinaryFormatter
-                
-                //посылаем файл
 
                 tcpClient.Close();
                 return new OperationResult(Result.OK, "");

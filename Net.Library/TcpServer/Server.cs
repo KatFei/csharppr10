@@ -3,6 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -49,52 +51,52 @@ namespace SomeProject.Library.Server
                 return false;
             }
         }
-        //public async Task TurnOnListener2()
-        //{
-        //    try
-        //    {
-        //        if (serverListener != null)
-        //            serverListener.Start();
-
-        //        while (true)
-        //        {
-        //            //выбирать между получением сообщения и получением файла
-        //            //считывание типа из OperationResult
-
-        //            OperationResult result = null;
-
-        //            client = serverListener.AcceptTcpClientAsync().Result;
-
-        //            byte[] data = new byte[1];
-        //            NetworkStream stream = client.GetStream();
-        //            int packageType = stream.Read(data, 0, 1);
-        //            if (data[0] == 0)
-        //            {
-        //                result = await ReceiveMessageFromClient();
-        //                Console.WriteLine("New message from client: " + result.Message);
-        //            }
-        //            else if (data[0] == 1)
-        //            {
-        //                string filename = "";
-        //                //считываем длину имени файла
-        //                int nameLength = 10;
-        //                data = new byte[nameLength];
-        //                int packageLength = stream.Read(data, 0, nameLength);
-        //                //считываем длину имя файла + расширение
-        //                int fileLength = Int32.Parse(data.ToString());
-        //                data = new byte[fileLength];
-        //                //int packageLength = stream.Read(data, 0, length);
-        //                result = await ReceiveFileFromClient(filename);
-        //                LogToClient("Prepare to upload file " + filename);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine("Cannot turn on listener: " + e.Message);
-        //    }
-        //}
         public async Task TurnOnListener()
+        {
+            try
+            {
+                if (serverListener != null)
+                    serverListener.Start();
+
+                while (true)
+                {
+                    //выбирать между получением сообщения и получением файла
+                    //считывание типа из OperationResult
+
+                    OperationResult result = null;
+
+                    client = serverListener.AcceptTcpClientAsync().Result;
+
+                    byte[] data = new byte[1];
+                    NetworkStream stream = client.GetStream();
+                    int packageType = stream.Read(data, 0, 1);
+                    if (data[0] == 0)
+                    {//проверка на fail!
+                        result = await ReceiveMessageFromClient();
+                        Console.WriteLine(result.Message);
+                    }
+                    else if (data[0] == 1)
+                    {
+                        //string filename = "";
+                        ////считываем длину имени файла
+                        //int nameLength = 10;
+                        //data = new byte[nameLength];
+                        //int packageLength = stream.Read(data, 0, nameLength);
+                        ////считываем длину имя файла + расширение
+                        //int fileLength = Int32.Parse(data.ToString());
+                        //data = new byte[fileLength];
+                        //int packageLength = stream.Read(data, 0, length);
+                        result = await ReceiveFileFromClient();
+                        LogToClient(result.Message);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Cannot turn on listener: " + e.Message);
+            }
+        }
+        public async Task TurnOnListener2()
         {
             try
             {
@@ -177,7 +179,7 @@ namespace SomeProject.Library.Server
             {
                 Console.WriteLine("Cannot turn on listener: " + e.Message);
             }
-        }
+        }//бывшый 1
         public async void LogToClient(string msg)
         {
             Console.WriteLine(msg);
@@ -189,7 +191,7 @@ namespace SomeProject.Library.Server
             {
                 Console.WriteLine("Waiting for connections...");
                 StringBuilder recievedMessage = new StringBuilder();
-                TcpClient client = serverListener.AcceptTcpClientAsync().Result;
+                //client = serverListener.AcceptTcpClientAsync().Result;
 
                 byte[] data = new byte[256];
                 NetworkStream stream = client.GetStream();
@@ -206,10 +208,10 @@ namespace SomeProject.Library.Server
                 stream.Close();
                 client.Close();
                 Console.WriteLine("Message >> " + recievedMessage.ToString());
-                if (recievedMessage.ToString() == "file")
-                    return new OperationResult(Result.OK, recievedMessage.ToString(), SendingType.File);                
-                else
-                    return new OperationResult(Result.OK, recievedMessage.ToString(), SendingType.Msg);
+                //if (recievedMessage.ToString() == "file")
+                //    return new OperationResult(Result.OK, recievedMessage.ToString(), SendingType.File);                
+                //else
+                    return new OperationResult(Result.OK, "New message from client: " +  recievedMessage.ToString(), SendingType.Msg);
 
                 
 
@@ -220,74 +222,48 @@ namespace SomeProject.Library.Server
             }
         }
 
-        //public async Task<OperationResult> ReceiveFileFromClient2()
-        //{
-        //    try
-        //    {
-        //        Console.WriteLine("Waiting for connections...");
-        //        Console.WriteLine("Uploading file >> ");
-        //        //получаем расширение файла
-        //        //TcpListener listen = new TcpListener(11000);
-        //        //listen.Start();
-        //        //client = listen.AcceptTcpClient();
-        //        TcpClient client = serverListener.AcceptTcpClientAsync().Result; // serverListener.AcceptTcpClient();
-        //        NetworkStream stream = client.GetStream();
-        //        int bufferSize = 1024;
-        //        int bytesRead = 0;
-        //        int allBytesRead = 0;
-        //        byte[] length = new byte[4];
-        //        //получаем кол-во байт в получаемом файле
-        //        bytesRead = stream.Read(length, 0, 4);
-        //        int dataLength = BitConverter.ToInt32(length, 0);
+        public async Task<OperationResult> ReceiveFileFromClient(string filename = null)
+        {
+            try
+            {
+                Console.WriteLine("Waiting for connections...");
+                Console.WriteLine("Uploading file >> ");
+                //получаем расширение файла
+                //TcpListener listen = new TcpListener(11000);
+                //listen.Start();
+                //client = listen.AcceptTcpClient();
+                //client = serverListener.AcceptTcpClientAsync().Result; // serverListener.AcceptTcpClient();
+                NetworkStream stream = client.GetStream();
 
-        //        int bytesLeft = dataLength;
-        //        byte[] data = new byte[dataLength];
-        //        //Deserialize file
-        //        //byte[] recievedFile = new byte[0];
-
-
-        //        //do
-        //        //{
-        //        //    int bytes = stream.Read(data, 0, data.Length);
-        //        //    //recievedFile.(data, bytes);
-        //        //}
-        //        //while (stream.DataAvailable);
+                //Deserialize file
+                //Десериализация:
+                IFormatter formatter = new BinaryFormatter();
+                FilePackage p = (FilePackage)formatter.Deserialize(stream);
+                filename = p.Filename;
+               
+                // создаем файл методом  File.WriteAllBytes
+                //сохранение файла  (можно вынести в отдельный метод - SaveFileOnServer)
+                filesTotal = Interlocked.Increment(ref filesTotal);
+                string dirName = DateTime.Today.ToString("yyyy-MM-dd");
+                FileInfo file = new FileInfo(serverPath + dirName + "\\" + filesTotal + "_" + filename);
+                file.Directory.Create(); // если папка существует, метод ничего не делает
+                File.WriteAllBytes(file.FullName, p.Attachment); //File.WriteAllBytes("D:\\server\\"+ filename, data);
 
 
-
-        //        while (bytesLeft > 0)
-        //        {
-
-        //            int nextPacketSize = (bytesLeft > bufferSize) ? bufferSize : bytesLeft;
-        //            bytesRead = stream.Read(data, allBytesRead, nextPacketSize);
-        //            allBytesRead += bytesRead;
-        //            bytesLeft -= bytesRead;
-
-        //        }
-        //        // создаем файл методом
-        //        ///File.WriteAllBytes
-        //        //сохранение файла  (можно вынести в отдельный метод - SaveFileOnServer)
-        //        filesTotal = Interlocked.Increment(ref filesTotal);
-        //        string dirName = DateTime.Today.ToString("yyyy-MM-dd");
-        //        FileInfo file = new FileInfo(serverPath + dirName + "\\" + filesTotal + "_" + filename);
-        //        file.Directory.Create(); // если папка существует, метод ничего не делает
-        //        File.WriteAllBytes(file.FullName, data); //File.WriteAllBytes("D:\\server\\"+ filename, data);
+                byte[] data = System.Text.Encoding.UTF8.GetBytes("Server:  file received");
+                stream.Write(data, 0, data.Length);
+                stream.Close();
+                client.Close();
 
 
-        //        data = System.Text.Encoding.UTF8.GetBytes("Server:  file received");
-        //        stream.Write(data, 0, data.Length);
-        //        stream.Close();
-        //        client.Close();
-
-
-        //        return new OperationResult(Result.OK, "recievedFile.ToString()", SendingType.File);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return new OperationResult(Result.Fail, e.Message);
-        //    }
-        //}
-        public async Task<OperationResult> ReceiveFileFromClient(string filename)
+                return new OperationResult(Result.OK, "File " + filename + " uploaded", SendingType.File);
+            }
+            catch (Exception e)
+            {
+                return new OperationResult(Result.Fail, e.Message);
+            }
+        }
+        public async Task<OperationResult> ReceiveFileFromClient2(string filename)
         {
             try
             {
@@ -353,7 +329,7 @@ namespace SomeProject.Library.Server
             {
                 return new OperationResult(Result.Fail, e.Message);
             }
-        }
+        } //бывшый 1
 
         public async Task<OperationResult> SendMessageToClient(string message)  //OperationResult
         {
